@@ -1,0 +1,29 @@
+<?php 
+if(!isset($_POST['submit'])){
+  //This page should not be accessed directly. Need to submit the form.
+   echo "Error; you need to submit the form"; 
+}
+$con_name = $_POST['con_name'];
+$con_email = $_POST['con_email'];
+$inquiry = $_POST['inquiry'];
+$con_message = $_POST['con_message'];
+
+// Validate first 
+if (empty($con_name)||empty($con_email)){
+echo "Name and the email are madatory";
+exit;
+}
+
+$email_form = $con_email; // <== put your email address here 
+$email_subject = "$inquiry \r \n";
+$email_body = "You have received a new message from the user $name. \n."
+		"email address : $con_email \n."
+		"Here is the message: \n $message.";
+$to = "hello@globalimpactgroup.co.za"; <== put your message address here 
+$headers = "from: $email_from  \r\n";
+
+// send the email!
+mail($to, $email_subject, $email_body, $headers);
+
+?>
+
